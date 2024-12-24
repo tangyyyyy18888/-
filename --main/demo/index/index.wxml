@@ -1,0 +1,43 @@
+<view class="form-container">
+  <view class="form-item">
+    <text>姓名：</text>
+    <input type="text" placeholder="请输入姓名" bindinput="inputName" />
+  </view>
+  <view class="form-item">
+    <text>电话：</text>
+    <input type="number" placeholder="请输入电话" bindinput="inputPhone" />
+  </view>
+  <view class="form-item" wx:if='{{value}}' bindtap="changejiantou">
+    <text>学校：</text>
+		<input placeholder="输入学校" bindinput="search" value="{{school}}"></input>
+		<view class="jiantou1" wx:if='{{isjiantou}}'><i class="form-item icon-jiantou"></i></view>
+		<view class="jiantou1" wx:else='{{isjiantou}}'><i class="form-item icon-jiantou1"></i></view>
+	</view>
+  <view class="form-item" wx:else bindtap="changejiantou">
+    <text>学校：</text>
+		<input placeholder="输入学校" bindinput="search" value="{{inputVal}}"></input>
+		<view class="jiantou1" wx:if='{{isjiantou}}'><i class="form-item icon-jiantou"></i></view>
+		<view class="jiantou1" wx:else='{{isjiantou}}'><i class="form-item icon-jiantou1"></i></view>
+	</view>
+
+	<view class="content" wx:if='{{!isjiantou}}'>
+		<view 
+			class="{{item.id==valueid ? 'active':''}}" 
+			wx:for="{{selectcontent}}" wx:key="idnex" 
+			bindtap="changecontent" 
+			data-datavalue="{{item}}">
+			{{item.name}}
+		</view>
+	</view>
+  <view class="form-item">
+    <text>性别：</text>
+    <radio-group bindchange="radioChange">
+      <label><radio value="男" />男</label>
+      <label><radio value="女" />女</label>
+    </radio-group>
+  </view>
+  <!-- <navigator url="../page/page.wxml">
+     <button type="primary" bindtap="submitForm">提交表单</button>
+  </navigator> -->
+  <button type="primary" bindtap="submitForm">提交表单</button>
+</view>
