@@ -12,7 +12,8 @@ Page({
     latitude: '',
     longitude: '',
     WXid:'',
-    meetingId:''
+    meetingId:'',
+    school:undefined
   },
   inputName: function (e) {
     this.setData({
@@ -40,7 +41,7 @@ Page({
   changejiantou(e){
     this.setData({
       isjiantou:!this.data.isjiantou,
-      inputVal:this.data.value
+      school:this.data.value
     })
   },
   // 选择数据后回显
@@ -52,7 +53,7 @@ Page({
     })
     // 每次输入的值都应该等于搜索后选中的值
     this.setData({
-      inputVal:this.data.value
+      school:this.data.value
     })
   },
   // 搜索功能
@@ -75,7 +76,7 @@ Page({
       })
       this.setData({
         // selectcontent: [{id:1,name:null}]
-        inputVal:null
+        school: ''
       })
     }
     else{
@@ -111,14 +112,15 @@ Page({
     const formData = {
       name: this.data.name,
       phone: this.data.phone,
-      inputval:this.data.inputval,
+      school:this.data.school,
       gender: this.data.gender,
       latitude: this.data.latitude,
       longitude: this.data.longitude
     };
+    console.log(formData);
     // 这里只是模拟发送请求到后端，实际需要使用 wx.request 发送真实请求
     wx.request({
-      url: 'https://yourbackendurl.com/signin', // 替换为真实后端接口地址
+      url: 'http://172.25.100.206:8080/meeting/meetingRecord/signin', // 替换为真实后端接口地址
       method: 'POST',
       data: formData,
       success: (res) => {

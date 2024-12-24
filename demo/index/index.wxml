@@ -9,7 +9,7 @@
   </view>
   <view class="form-item" wx:if='{{value}}' bindtap="changejiantou">
     <text>学校：</text>
-		<input placeholder="输入学校" bindinput="search" value="{{inputVal}}"></input>
+		<input placeholder="输入学校" bindinput="search" value="{{school}}"></input>
 		<view class="jiantou1" wx:if='{{isjiantou}}'><i class="form-item icon-jiantou"></i></view>
 		<view class="jiantou1" wx:else='{{isjiantou}}'><i class="form-item icon-jiantou1"></i></view>
 	</view>
